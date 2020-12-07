@@ -1,0 +1,58 @@
+<div class="container">
+  <h1 class="text-center">
+    Tareas <span class="badge badge-primary mt-5"> Evolution</span>
+  </h1>
+  <br><br><br>
+  
+  <a routerLink="/dashboard/nueva" class="btn btn-primary" data-toggle="tooltip">Crear Tarea</a>
+  
+  <br><br><br>
+
+<div class="row">
+    <div class="col-4" *ngFor="let task of tasks">
+      <div class="card" >
+          <div class="card-header"><h2>{{ task.nameTask }} 
+            
+
+            <a 
+            (click)="deleteTask(task)"
+            class="cursor float-right" 
+            data-toggle="tooltip"
+            data-original-title="Borrar">
+            <span style="font-size: 1em; color: Tomato">
+                 <i class="fa fa-trash"></i>
+             </span>
+         </a>
+            <a [routerLink]="['/dashboard', task.tid ]" 
+            class="mr-2 cursor float-right"
+            data-toggle="tooltip"                                       
+            data-original-title="Editar">
+            <span
+                style="font-size: 1em; color: dodgerblue">
+                <i class="fa fa-pencil-square-o"></i>
+             </span>
+            </a>
+            
+            
+         
+        </h2>
+          </div>          
+          <div class="card-body">
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <select class="form-control custom-select"
+                    [(ngModel)]="task.priority"
+                    (change)="changePriority(task)"
+                    >
+                    <option value="alta" >alta </option>
+                    <option value="media">media</option>
+                    <option value="baja">baja</option>
+            </select>
+        </div>
+          <div class="card-footer text-muted " >
+            
+             <strong> fecha de Vencimiento </strong> <h5>{{ task.expirationDate | date: 'dd/MM/yyyy'}}</h5>
+            
+          </div>
+        </div>
+    </div>
+</div>

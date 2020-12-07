@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 
-const { dbconnetion } = require('./config/conenctionDB');
+const { dbconnetion } = require('./config/connectionDB');
 const app = express();
 // middware for read and parse from body
 
@@ -10,12 +10,12 @@ app.use(express.urlencoded({ extended: false }));
 dbconnetion();
 
 // Rotes
-app.use('/api/hospitals', require('./routes/hospitals'));
-app.use('/api/medics', require('./routes/medics'));
-app.use('/api/login', require('./routes/login'));
-app.use('/api/users', require('./routes/users'));
-app.use('/api/quests', require('./routes/quests'));
-app.use('/api/upload', require('./routes/upload'));
+
+app.use('/login', require('./routes/login'));
+app.use('/task', require('./routes/task'));
+app.use('/user', require('./routes/user'));
+
+
 
 app.listen(process.env.PORT, () => {
   console.log(

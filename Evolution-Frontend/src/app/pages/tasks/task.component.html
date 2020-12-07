@@ -1,0 +1,66 @@
+<div class="container">
+    <h1 class="text-center">
+        Tareas <span class="badge badge-primary mt-5"> Evolution</span>
+    </h1>
+    <br /><br /><br />
+
+    <div class="card">
+        <div class="card-header bg-info">
+            <h4 class="m-b-0 text-white">Plan de Tarea</h4>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="taskForm"
+                    (submit)="saveData()">
+                <div class="form-body">
+                    <h3 class="card-title">Informacion de la tarea</h3>
+                    <hr />
+                    <div class="row p-t-20">
+                        <div class="col-md">
+                            <div class="form-group">
+                                <label class="control-label">Nombre de la tarea</label>
+                                <input type="text" class="form-control" formControlName="nameTask"
+                                    placeholder="Nombre de la tarea" />
+                                <small class="form-control-feedback">
+                                    Nombre completo
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--/row-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group has-success">
+                                <label class="control-label">Prioridad</label>
+                                <select class="form-control custom-select" formControlName="priority">
+                                    <option value="alta">Alta</option>
+                                    <option value="media">Media</option>
+                                    <option value="baja">Baja</option>
+                                </select>
+                                <small class="form-control-feedback">
+                                    Seleccione su prioridad
+                                </small>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Fecha de expiracion</label>
+                                <input type="date" class="form-control" placeholder="dd/mm/yyyy"
+                                    formControlName="expirationDate" />
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class=" mr-2 btn btn-success">
+                        <i class="fa fa-check"></i> Guardar
+                    </button>
+                    <button type="button" class="btn btn-inverse">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
