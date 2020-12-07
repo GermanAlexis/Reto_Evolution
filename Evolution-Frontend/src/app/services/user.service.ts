@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { RegisterForm } from '../interfaces/RegisterForm.interface';
 import { LoginForm } from '../interfaces/LoginForm.interface';
-import { EmailValidator } from '@angular/forms';
 
 
 const base_url = environment.base_url;
@@ -14,19 +13,9 @@ export class UserService {
 
   constructor( private http: HttpClient) { }
 
-  get token(): string {
-    return localStorage.getItem('token') || '';
-  }
 
-  get headers() {
-    return {
-      headers: {
-        'x-token': this.token,
-      },
-    };
-  }
   login( formdata: LoginForm) {
-    return this.http.post(`${base_url}/login`, formdata, this.headers );
+    return this.http.post(`${base_url}/login`, formdata);
   }
 
   createUser(formData: RegisterForm) {

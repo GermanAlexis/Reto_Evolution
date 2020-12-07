@@ -35,9 +35,7 @@ export class RegisterComponent implements OnInit {
       Swal.fire('Exitos', 'Usuario Registrado', 'success');
       this.router.navigateByUrl('/dashboard');
       console.log(resp);
-     }, (err) => {
-        Swal.fire('Error', err.error.mgs, 'error');
-     });
+     }, (err) => Swal.fire('Error', err.error.msg, 'error'));
   }
 
   campoValid( campo: string): boolean {

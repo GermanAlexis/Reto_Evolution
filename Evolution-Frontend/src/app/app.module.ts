@@ -10,6 +10,7 @@ import { TasksComponent } from './pages/tasks/tasks.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { PagesnotfoundComponent } from './pagesnotfound/pagesnotfound.component';
+import { TaskComponent } from './pages/tasks/task.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PagesnotfoundComponent } from './pagesnotfound/pagesnotfound.component'
     TasksComponent,
     LoginComponent,
     RegisterComponent,
-    PagesnotfoundComponent
+    PagesnotfoundComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,
