@@ -7,7 +7,8 @@ const {
   createTask,
   readTask,
   updateTask,
-  deleteTask
+  deleteTask,
+  taskGetById
 } = require('../controllers/task');
 const router = Router();
 
@@ -26,6 +27,8 @@ router.post('/',
 );
 
 router.get('/', validateJWT, readTask);
+router.get('/:id', validateJWT, taskGetById);
+
 router.put(
   '/:id',
   [
