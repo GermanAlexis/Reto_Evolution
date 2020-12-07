@@ -24,8 +24,10 @@ const createTask = async (req, res ) => {
 }
 
 const readTask = async (req, res) => {
-
-    const tasks = await Task.find();
+  
+    const uid = req.uid.uid;
+   
+    const tasks = await Task.find({user: uid });
     
       res.status(200).json({
         Ok: true,
@@ -94,10 +96,25 @@ const deleteTask = async (req, res) => {
         msg: 'Comunique al adminsitrador',
       });
     }
-  };
+};
+
+const taskGetById = async (req, res) => {
+
+  const id = req.params.id;
+
+  const task = await Task.findById(id);
+    
+      res.status(200).json({
+        Ok: true,
+        msg: 'la tarea fue encontrada',
+        task
+      })
+};
+
 module.exports = {
     createTask,
     readTask,
     updateTask,
-    deleteTask
+    deleteTask,
+    taskGetById
 }
