@@ -5,6 +5,12 @@ const { dbconnetion } = require('./config/connectionDB');
 const app = express();
 // middware for read and parse from body
 
+
+// requiere CORS and Config
+const cors = require('cors');
+app.use( cors() );
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 dbconnetion();
