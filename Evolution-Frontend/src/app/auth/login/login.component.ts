@@ -27,10 +27,7 @@ export class LoginComponent implements OnInit {
      }
     this.userService.login(this.loginForm.value).subscribe(
       (resp: any) => {
-          console.log(resp);
-          localStorage.setItem('email', this.loginForm.get('email').value);
           localStorage.setItem('token', resp.token);
-
           this.router.navigateByUrl('/dashboard');
       },
       (err) => {

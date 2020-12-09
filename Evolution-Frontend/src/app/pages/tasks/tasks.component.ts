@@ -3,7 +3,7 @@ import { Task } from 'src/app/models/task.model,';
 import { TaskService } from '../../services/task.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
-import { ActivatedRoute } from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-tasks',
@@ -19,6 +19,21 @@ export class TasksComponent implements OnInit {
     this.loadTasks();
   }
 
+  alertDay(date: string) {
+    if ( this.expiration(date) > 0 ) {
+         return `bg-dark`;
+    }
+    if ( this.expiration(date) < -5  ) {
+          return `bg-info`;
+    }
+    if ( this.expiration(date) > -5 &&  this.expiration(date) < -1  ) {
+      return `bg-warning`;
+}
+    if ( this.expiration(date) === 0) {
+      return `bg-danger`;
+}
+  }
+
   loadTasks() {
     this.taskService.getTask().subscribe( (resp: any) => {
       this.tasks = resp.tasks;
@@ -30,7 +45,7 @@ export class TasksComponent implements OnInit {
   }
 
 
-    deleteTask(task: Task) {
+  deleteTask(task: Task) {
       Swal.fire({
         title: 'Estas Seguro?',
         text: `Esta por eliminar la tarea ${task.nameTask}`,
@@ -49,7 +64,11 @@ export class TasksComponent implements OnInit {
           });
         }
       });
-    }
+  }
 
+  expiration(date: any) {
+      const dateofvisit = moment(date, 'YYYY-MM-DD');
+      return moment().diff(dateofvisit, 'days');
+  }
   }
 
