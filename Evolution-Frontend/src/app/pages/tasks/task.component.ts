@@ -65,8 +65,8 @@ export class TaskComponent implements OnInit {
 
   } else {
     this.taskService.createTask(this.taskForm.value).subscribe( (resp: any) => {
-      Swal.fire('Exito', resp.msg, 'success');
-      this.router.navigateByUrl(`/dashboard/${resp.Task.tid}`);
+      Swal.fire('Exitos', `la tarea ${ nameTask } Creo Correctamente`, 'success');
+      this.router.navigateByUrl(`/dashboard`);
     });
     }
   }

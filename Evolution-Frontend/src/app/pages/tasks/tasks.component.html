@@ -1,4 +1,5 @@
 <div class="container">
+
   <h1 class="text-center">
     Tareas <span class="badge badge-primary mt-5"> Evolution</span>
   </h1>
@@ -48,10 +49,15 @@
                     <option value="baja">baja</option>
             </select>
         </div>
-          <div class="card-footer text-muted " >
-            
-             <strong> fecha de Vencimiento </strong> <h5>{{ task.expirationDate | date: 'dd/MM/yyyy'}}</h5>
-            
+          <div class="card-footer  text-white"  [ngClass]="alertDay(task.expirationDate)"
+              *ngIf="expiration(task.expirationDate) <= 0 " >
+             <strong> fecha de Vencimiento </strong> <h5>{{ task.expirationDate | date: 'dd/MM/yyyy'}} </h5>
+             {{ expiration(task.expirationDate) }}  Dias Restantes
+          </div>
+          <div class="card-footer  text-white"  [ngClass]="alertDay(task.expirationDate)"
+              *ngIf="expiration(task.expirationDate) > 0 " >
+             <strong> fecha de Vencimiento </strong> <h5>{{ task.expirationDate | date: 'dd/MM/yyyy'}} </h5>
+             {{ expiration(task.expirationDate) }}  Dias Atrasados
           </div>
         </div>
     </div>
