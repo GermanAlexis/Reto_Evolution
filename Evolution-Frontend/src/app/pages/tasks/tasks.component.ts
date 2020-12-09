@@ -21,16 +21,16 @@ export class TasksComponent implements OnInit {
 
   alertDay(date: string) {
     if ( this.expiration(date) > 0 ) {
-         return `bg-dark`;
+         return `alert-dark`;
     }
     if ( this.expiration(date) < -5  ) {
-          return `bg-info`;
+          return `alert-info`;
     }
-    if ( this.expiration(date) > -5 &&  this.expiration(date) < -1  ) {
-      return `bg-warning`;
-}
+    if ( this.expiration(date) < -5 ||  this.expiration(date) < -1  ) {
+      return `alert-warning`;
+    }
     if ( this.expiration(date) === 0) {
-      return `bg-danger`;
+      return `alert-danger`;
 }
   }
 
@@ -69,6 +69,7 @@ export class TasksComponent implements OnInit {
   expiration(date: any) {
       const dateofvisit = moment(date, 'YYYY-MM-DD');
       return moment().diff(dateofvisit, 'days');
-  }
+
+    }
   }
 
